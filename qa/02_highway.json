@@ -1,0 +1,10 @@
+{
+  "source_rows": 7804,
+  "family_attr_conflicts": {},
+  "config_rows": 875,
+  "unmapped_pollutants": [],
+  "unpivot_rows_before": 15608,
+  "unpivot_empty_dropped": 2184,
+  "family_rows": 702,
+  "emission_rows": 13424
+}

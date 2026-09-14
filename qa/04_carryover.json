@@ -1,0 +1,36 @@
+{
+  "families_total": 7925,
+  "families_with_carryover": 5982,
+  "families_without_carryover": 1943,
+  "orphan_edges": 568,
+  "resolvable_edges": 5414,
+  "self_referencing_families": 30,
+  "true_cycles_detected": 0,
+  "true_cycle_members": [],
+  "depth_max": 14,
+  "depth_mean": 1.382,
+  "depth_distribution": {
+    "0": 2541,
+    "1": 3719,
+    "2": 583,
+    "3": 295,
+    "4": 211,
+    "5": 157,
+    "6": 114,
+    "7": 67,
+    "8": 58,
+    "9": 50,
+    "10": 41,
+    "11": 36,
+    "12": 23,
+    "13": 16,
+    "14": 14
+  },
+  "distinct_lineages": 2541,
+  "longest_lineage_example": {
+    "engine_family": "TCPXL18.1NYS",
+    "model_year": 2026,
+    "lineage_root": "CCPXL18.1NYS",
+    "depth": 14
+  }
+}

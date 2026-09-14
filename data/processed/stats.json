@@ -1,0 +1,346 @@
+{
+  "model_year_coverage": {
+    "highway": {
+      "interior_median": 64.0,
+      "by_year": {
+        "2015": {
+          "families": 3,
+          "share_of_median": 0.047,
+          "coverage": "partial_archive"
+        },
+        "2016": {
+          "families": 29,
+          "share_of_median": 0.453,
+          "coverage": "partial_archive"
+        },
+        "2017": {
+          "families": 75,
+          "share_of_median": 1.172,
+          "coverage": "complete"
+        },
+        "2018": {
+          "families": 61,
+          "share_of_median": 0.953,
+          "coverage": "complete"
+        },
+        "2019": {
+          "families": 61,
+          "share_of_median": 0.953,
+          "coverage": "complete"
+        },
+        "2020": {
+          "families": 56,
+          "share_of_median": 0.875,
+          "coverage": "complete"
+        },
+        "2021": {
+          "families": 64,
+          "share_of_median": 1.0,
+          "coverage": "complete"
+        },
+        "2022": {
+          "families": 72,
+          "share_of_median": 1.125,
+          "coverage": "complete"
+        },
+        "2023": {
+          "families": 64,
+          "share_of_median": 1.0,
+          "coverage": "complete"
+        },
+        "2024": {
+          "families": 76,
+          "share_of_median": 1.188,
+          "coverage": "complete"
+        },
+        "2025": {
+          "families": 75,
+          "share_of_median": 1.172,
+          "coverage": "complete"
+        },
+        "2026": {
+          "families": 66,
+          "share_of_median": 1.031,
+          "coverage": "complete"
+        }
+      },
+      "usable_range": [
+        2017,
+        2026
+      ],
+      "excluded": [
+        2015,
+        2016
+      ]
+    },
+    "nonroad": {
+      "interior_median": 534.0,
+      "by_year": {
+        "2011": {
+          "families": 66,
+          "share_of_median": 0.124,
+          "coverage": "partial_archive"
+        },
+        "2012": {
+          "families": 521,
+          "share_of_median": 0.976,
+          "coverage": "complete"
+        },
+        "2013": {
+          "families": 401,
+          "share_of_median": 0.751,
+          "coverage": "complete"
+        },
+        "2014": {
+          "families": 430,
+          "share_of_median": 0.805,
+          "coverage": "complete"
+        },
+        "2015": {
+          "families": 454,
+          "share_of_median": 0.85,
+          "coverage": "complete"
+        },
+        "2016": {
+          "families": 485,
+          "share_of_median": 0.908,
+          "coverage": "complete"
+        },
+        "2017": {
+          "families": 489,
+          "share_of_median": 0.916,
+          "coverage": "complete"
+        },
+        "2018": {
+          "families": 496,
+          "share_of_median": 0.929,
+          "coverage": "complete"
+        },
+        "2019": {
+          "families": 534,
+          "share_of_median": 1.0,
+          "coverage": "complete"
+        },
+        "2020": {
+          "families": 569,
+          "share_of_median": 1.066,
+          "coverage": "complete"
+        },
+        "2021": {
+          "families": 583,
+          "share_of_median": 1.092,
+          "coverage": "complete"
+        },
+        "2022": {
+          "families": 597,
+          "share_of_median": 1.118,
+          "coverage": "complete"
+        },
+        "2023": {
+          "families": 607,
+          "share_of_median": 1.137,
+          "coverage": "complete"
+        },
+        "2024": {
+          "families": 597,
+          "share_of_median": 1.118,
+          "coverage": "complete"
+        },
+        "2025": {
+          "families": 558,
+          "share_of_median": 1.045,
+          "coverage": "complete"
+        },
+        "2026": {
+          "families": 530,
+          "share_of_median": 0.993,
+          "coverage": "complete"
+        },
+        "2027": {
+          "families": 8,
+          "share_of_median": 0.015,
+          "coverage": "partial_forward"
+        }
+      },
+      "usable_range": [
+        2012,
+        2026
+      ],
+      "excluded": [
+        2011,
+        2027
+      ]
+    }
+  },
+  "coverage_threshold": 0.5,
+  "build_date": "2026-09-14",
+  "panels": [
+    "highway",
+    "nonroad"
+  ],
+  "families_total": 8627,
+  "families_highway": 702,
+  "families_nonroad": 7925,
+  "configs_total": 9794,
+  "emission_rows_total": 97008,
+  "emission_rows_highway": 13424,
+  "emission_rows_nonroad": 83584,
+  "model_year_min_highway": 2015,
+  "model_year_max_highway": 2026,
+  "model_year_min_nonroad": 2011,
+  "model_year_max_nonroad": 2027,
+  "manufacturers_highway": 27,
+  "manufacturers_nonroad": 86,
+  "manufacturers_total": 108,
+  "pollutants": [
+    "CH4",
+    "CO",
+    "CO2",
+    "HCHO",
+    "N2O",
+    "NH3",
+    "NMHC",
+    "NMHCE",
+    "NMHC_NOx",
+    "NOx",
+    "PM",
+    "smoke_accel",
+    "smoke_lug",
+    "smoke_peak"
+  ],
+  "pollutant_count": 14,
+  "test_types": [
+    "smoke",
+    "steady_state",
+    "transient"
+  ],
+  "units_present": [
+    "g/bhp-hr",
+    "g/kW-hr",
+    "pct opacity"
+  ],
+  "rows_by_panel_pollutant": {
+    "PM": 15693,
+    "NOx": 14519,
+    "CO": 14238,
+    "NMHC": 14219,
+    "CO2": 13196,
+    "CH4": 7456,
+    "NMHC_NOx": 7067,
+    "N2O": 4700,
+    "smoke_accel": 1853,
+    "smoke_peak": 1785,
+    "smoke_lug": 1763,
+    "HCHO": 503,
+    "NMHCE": 13,
+    "NH3": 3
+  },
+  "families_by_model_year": {
+    "2011": 66,
+    "2012": 521,
+    "2013": 401,
+    "2014": 430,
+    "2015": 457,
+    "2016": 514,
+    "2017": 564,
+    "2018": 557,
+    "2019": 595,
+    "2020": 625,
+    "2021": 647,
+    "2022": 669,
+    "2023": 671,
+    "2024": 673,
+    "2025": 633,
+    "2026": 596,
+    "2027": 8
+  },
+  "nonroad_by_tier": {
+    "Tier 4 (Final or Phase In)": 5626,
+    "Tier 3": 983,
+    "Interim Tier 4": 828,
+    "Tier 2": 488
+  },
+  "carryover_families_with_link": 5982,
+  "carryover_orphan_edges": 568,
+  "carryover_self_referencing": 30,
+  "carryover_true_cycles": 0,
+  "carryover_distinct_lineages": 2541,
+  "carryover_depth_max": 14,
+  "carryover_depth_mean": 1.382,
+  "carryover_longest_example": {
+    "engine_family": "TCPXL18.1NYS",
+    "model_year": 2026,
+    "lineage_root": "CCPXL18.1NYS",
+    "depth": 14
+  },
+  "negative_cert_results": 50,
+  "negative_cert_result_share_pct": 0.0515,
+  "negative_cert_result_families": 18,
+  "negative_cert_result_panels": [
+    "nonroad"
+  ],
+  "integrity_checks": {
+    "family_key_unique": true,
+    "no_emission_row_without_family": true,
+    "units_never_null": true,
+    "no_mixed_units_within_panel": true,
+    "highway_units_correct": true,
+    "nonroad_units_correct": true,
+    "carryover_no_true_cycles": true,
+    "every_negative_value_is_flagged": true,
+    "flagged_share_below_0pt1pct": true
+  },
+  "integrity_all_passed": true,
+  "spot_checks": [
+    {
+      "why": "highway, transient NOx \u2014 the standard case",
+      "panel": "highway",
+      "engine_family": "MSZXH05.23FD",
+      "model_year": 2021,
+      "pollutant": "NOx",
+      "test_type": "transient",
+      "cidex_cert_result": 0.17,
+      "units": "g/bhp-hr"
+    },
+    {
+      "why": "highway, earliest model year present \u2014 tests the MY2015-16 archive boundary",
+      "panel": "highway",
+      "engine_family": "FNGCH0466AEA",
+      "model_year": 2015,
+      "pollutant": "PM",
+      "test_type": "steady_state",
+      "cidex_cert_result": 0.01,
+      "units": "g/bhp-hr"
+    },
+    {
+      "why": "nonroad, steady-state NOx \u2014 tests the wide-to-long unpivot",
+      "panel": "nonroad",
+      "engine_family": "LCPXL08.8NZS",
+      "model_year": 2020,
+      "pollutant": "NOx",
+      "test_type": "steady_state",
+      "cidex_cert_result": 3.36,
+      "units": "g/kW-hr"
+    },
+    {
+      "why": "deepest carryover lineage (depth 14, root CCPXL32.0NZS) \u2014 tests lineage resolution",
+      "panel": "nonroad",
+      "engine_family": "TCPXL32.1NZS",
+      "model_year": 2026,
+      "pollutant": "NMHC",
+      "test_type": "steady_state",
+      "cidex_cert_result": 0.08,
+      "units": "g/kW-hr"
+    },
+    {
+      "why": "a flagged negative value \u2014 is this real in EPA's own record?",
+      "panel": "nonroad",
+      "engine_family": "CDICL05.8HTA",
+      "model_year": 2012,
+      "pollutant": "NOx",
+      "test_type": "steady_state",
+      "cidex_cert_result": -1.0,
+      "units": "g/kW-hr"
+    }
+  ]
+}

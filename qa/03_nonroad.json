@@ -1,0 +1,22 @@
+{
+  "measurement_columns": 22,
+  "attribute_columns": 24,
+  "source_rows": 10214,
+  "unmapped_attribute_columns": [],
+  "attr_conflicts_before_split": {
+    "engine_model": 278,
+    "engine_code": 609,
+    "displacement_l": 88,
+    "certification_fuel": 35,
+    "engine_operation": 422,
+    "test_procedure": 428,
+    "test_procedure_type": 80
+  },
+  "config_rows": 8919,
+  "family_attr_conflicts_after_split": {},
+  "long_rows_before": 224708,
+  "long_empty_dropped": 141657,
+  "fel_values": 1606,
+  "family_rows": 7925,
+  "emission_rows": 83584
+}

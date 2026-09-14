@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+title: "CIDEX: Compression-Ignition Engine Certification Panel"
+message: "If you use this dataset, please cite it as below."
+type: dataset
+authors:
+  - family-names: "Imafidon"
+    given-names: "Osariemen"
+    orcid: "https://orcid.org/0009-0006-3069-4674"
+    affiliation: "Independent Researcher"
+version: "1.0.0-draft"
+date-released: "2026-09-14"
+license: CC-BY-4.0
+abstract: >-
+  A harmonized engine-family-level panel of United States Environmental Protection
+  Agency certification data for heavy-duty highway and nonroad compression-ignition
+  engines. Reconciles two EPA source workbooks whose internal structures differ - one
+  long on pollutant, one wide - into a single schema covering 8,627
+  engine families and 97,008 emission records across
+  108 manufacturers, model years 2011
+  to 2027. Includes a resolved carryover lineage linking
+  2,541 distinct nonroad certification families across
+  model years. Units are preserved as certified and never silently converted.
+keywords:
+  - diesel engines
+  - emissions certification
+  - compression ignition
+  - EPA
+  - nonroad engines
+  - heavy-duty engines
+  - open data
