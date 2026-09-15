@@ -336,7 +336,7 @@ The result is 2,541 distinct lineages over
 7,925 nonroad families, with mean depth 1.382 and maximum
 depth 14. The deepest example is family
 `TCPXL18.1NYS` (MY2026),
-rooted at `CCPXL18.1NYS`. Appendix E gives the full depth
+rooted at `CCPXL18.1NYS`. Appendix D gives the full depth
 distribution; 5,384 families sit at depth one or greater.
 
 ### 2.8 Units

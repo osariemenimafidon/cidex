@@ -474,7 +474,7 @@ The result is {f(QC['distinct_lineages'])} distinct lineages over
 {f(QC['families_total'])} nonroad families, with mean depth {QC['depth_mean']} and maximum
 depth {QC['depth_max']}. The deepest example is family
 `{QC['longest_lineage_example']['engine_family']}` (MY{QC['longest_lineage_example']['model_year']}),
-rooted at `{QC['longest_lineage_example']['lineage_root']}`. Appendix E gives the full depth
+rooted at `{QC['longest_lineage_example']['lineage_root']}`. Appendix D gives the full depth
 distribution; {f(DEPTH_NONZERO)} families sit at depth one or greater.
 
 ### 2.8 Units
