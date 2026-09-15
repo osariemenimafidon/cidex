@@ -86,6 +86,13 @@ def main():
     df = pd.read_excel(SRC, sheet_name="Family Info", header=None, skiprows=2)
     df = df.dropna(how="all")
     report["source_rows"] = len(df)
+    # How many families span more than one SOURCE row. This is what motivates the
+    # family/configuration split and the source-row-keyed FEL merge; it is larger
+    # than the count of distinct configurations, because several source rows can
+    # share identical configuration attributes and collapse on de-duplication.
+    _mult = df.groupby([0, 1]).size()
+    report["families_multi_source_row"] = int((_mult > 1).sum())
+    report["max_source_rows_one_family"] = int(_mult.max())
 
     # --- family dimension ---
     fam = pd.DataFrame()

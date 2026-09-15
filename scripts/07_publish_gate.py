@@ -26,7 +26,11 @@ DOC_EXT  = {".md", ".cff", ".html", ".txt", ".rst"}
 TEXT_EXT = DOC_EXT | {".py", ".json", ".csv", ".yml", ".yaml", ".toml"}
 
 DOC_PATTERNS = [
-    ("DRAFT stamp",     re.compile(r"\bDRAFT\b")),
+    # Match the STAMP, not the word. The technical report documents how the draft
+    # mechanism works, and a bare \bDRAFT\b flagged that prose as if it were a
+    # stamp. A scanner that cries wolf on its own documentation gets ignored,
+    # which is the failure mode that matters.
+    ("DRAFT stamp",     re.compile(r"DRAFT\s*[-\u2013\u2014]\s*NOT VERIFIED")),
     ("VERIFY tag",      re.compile(r"\[VERIFY[^\]]*\]")),
     ("TARGET tag",      re.compile(r"\[TARGET[^\]]*\]")),
     ("DOI placeholder", re.compile(r"\[DOI\]")),
@@ -38,6 +42,9 @@ SECRET_PATTERNS = [
     ("private key",    re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")),
 ]
 CODE_ADVISORY = [("VERIFY annotation", re.compile(r"\[VERIFY[^\]]*\]"))]
+# A bare "DRAFT" at the start of a line in a document is probably a stamp in a
+# shape this scanner does not know. Advisory, not blocking.
+DOC_ADVISORY = [("possible draft marker", re.compile(r"^\s*>?\s*\*{0,2}DRAFT\b"))]
 
 
 def scan():
@@ -62,6 +69,9 @@ def scan():
                     for label, rx in DOC_PATTERNS:
                         if rx.search(line):
                             blocking.append((label, path, n, line.strip()[:88]))
+                    for label, rx in DOC_ADVISORY:
+                        if rx.search(line):
+                            advisory.append((label, path, n, line.strip()[:88]))
                 elif ext == ".py":
                     for label, rx in CODE_ADVISORY:
                         if rx.search(line):
@@ -83,10 +93,41 @@ def report(title, items):
     print()
 
 
+def attestation_drift():
+    """Compare the spot-checks the author signed against the current build.
+
+    The selector picks a median row per category, so its output moves when the
+    row set changes. A signature that silently follows is not an attestation.
+    """
+    if not os.path.exists(".gate-signed"):
+        return None
+    import json
+    line = next((l for l in open(".gate-signed") if l.startswith("ATTESTED_SPOT_CHECKS:")), None)
+    if not line:
+        return ["attestation file records no spot-checks; re-sign to pin them"]
+    attested = [x.strip() for x in line.split(":", 1)[1].split(",") if x.strip()]
+    try:
+        S = json.load(open("data/processed/stats.json"))
+    except OSError:
+        return ["stats.json missing; cannot check the attestation"]
+    current = [c["engine_family"] for c in S.get("spot_checks", [])]
+    if set(attested) != set(current):
+        return [f"attested: {sorted(attested)}", f"current build: {sorted(current)}",
+                "The signed spot-checks no longer match this build. Re-verify and re-sign."]
+    return []
+
+
 def main():
     blocking, advisory = scan()
+    drift = attestation_drift()
     if advisory:
         report(f"ADVISORY — {len(advisory)} engineering annotation(s) to confirm resolved:", advisory)
+    if drift:
+        print("GATE FAIL — the signed attestation does not match this build:\n")
+        for d in drift:
+            print("   ", d)
+        print()
+        return 1
     if blocking:
         report(f"GATE FAIL — {len(blocking)} blocking item(s):", blocking)
         return 1
@@ -96,6 +137,7 @@ def main():
         print("HUMAN HALF: SIGNED. .gate-signed is present — the author has attested to")
         print("reproducing the pipeline, completing the spot-checks against the primary")
         print("source, and ruling on the flagged judgement calls.\n")
+        print("Attested spot-checks match this build.")
         print("Delete .gate-signed and rebuild to return every document and figure to DRAFT.")
         print("\nGATE CLEARED.")
     else:

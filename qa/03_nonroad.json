@@ -2,6 +2,8 @@
   "measurement_columns": 22,
   "attribute_columns": 24,
   "source_rows": 10214,
+  "families_multi_source_row": 1487,
+  "max_source_rows_one_family": 34,
   "unmapped_attribute_columns": [],
   "attr_conflicts_before_split": {
     "engine_model": 278,

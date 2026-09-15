@@ -1,10 +1,19 @@
 CIDEX verification gate — signed by the author.
 
 The author states they have reproduced the pipeline from the README, confirmed
-stats.json matches, completed the five named spot-checks against EPA's own
+stats.json matches, completed the five named spot-checks below against EPA's own
 certificate records, and ruled on the flagged judgement calls.
 
-Signed: Osariemen Imafidon (ORCID 0009-0006-3069-4674)
+Signed: Imafidon, Osariemen (ORCID 0009-0006-3069-4674)
 Recorded: 2026-09-15
+
+ATTESTED_SPOT_CHECKS: MSZXH05.23FD,FNGCH0466AEA,LCEXL60.0AAB,TCPXL32.1NZS,CDICL05.8HTA
+
+The line above pins WHICH records were checked. The spot-check selector picks a
+median row per category, so its output moves whenever the underlying row set
+changes — as it did when a merge defect was corrected. Without pinning, a
+signature could silently come to refer to records nobody ever looked at.
+scripts/07_publish_gate.py compares this list against the current build and
+blocks publication if they differ.
 
 Deleting this file returns every document and figure to DRAFT on the next build.
