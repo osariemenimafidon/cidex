@@ -55,7 +55,14 @@ python3 scripts/04_carryover.py         # resolve nonroad lineage chains
 python3 scripts/05_combine_qa.py        # combine, flag, integrity-check, write stats.json
 python3 scripts/06_docs.py              # regenerate this documentation
 python3 scripts/08_figures.py           # regenerate figures
+python3 scripts/11_report.py            # regenerate the technical report
+python3 scripts/14_preprint.py          # regenerate the data paper preprint
+python3 scripts/15_explorer_data.py     # regenerate the explorer's data file
+python3 scripts/07_publish_gate.py      # pre-publication scan
 ```
+
+Scripts 09, 10, 12 and 13 are release and deposit helpers rather than build steps; they
+are run when publishing, not when rebuilding.
 
 Every number in every document is interpolated from `data/processed/stats.json`, which
 the pipeline writes. Nothing is typed by hand, so the prose cannot drift from the data.
