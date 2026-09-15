@@ -13,4 +13,7 @@ __pycache__/
 *.pyc
 .venv/
 .DS_Store
-.gate-signed
+
+# .gate-signed is NOT ignored: it is the author's verification attestation and
+# the thing that keeps documents unstamped. A clone without it rebuilds to DRAFT,
+# which would contradict the verified documents shipped alongside.
