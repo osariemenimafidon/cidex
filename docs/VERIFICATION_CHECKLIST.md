@@ -2,7 +2,7 @@
 
 > **DRAFT — NOT VERIFIED.** This package has not passed its verification gate. No number in it has been checked against the primary source by the author. Do not cite, deposit, or redistribute.
 
-Version 1.0 · built 2026-09-14 · author: Imafidon, Osariemen (ORCID 0009-0006-3069-4674)
+Version 1.0 · built 2026-09-15 · author: Imafidon, Osariemen (ORCID 0009-0006-3069-4674)
 
 Nothing in this package may be deposited, cited, or described as published until every
 box below is ticked by the author personally. The mechanical checks are automated; the

@@ -1,5 +1,13 @@
+# Raw EPA source files — download per README, never redistributed here
 data/raw/*.xlsx
 data/raw/*.zip
+
+# Built data products. These regenerate from data/raw/ in about a minute and are
+# deposited on Zenodo, which is the citable home for them. Keeping them in git
+# would add ~25 MB to history on every annual rebuild.
+data/processed/*.csv
+data/processed/*.parquet
+
 release/
 __pycache__/
 *.pyc

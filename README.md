@@ -37,6 +37,14 @@ Keep the filenames as downloaded. `scripts/01_provenance.py` records the SHA-256
 file, so you can confirm you started from the same bytes this build did — the hashes are
 in `logs/provenance.jsonl`.
 
+## What is and is not in this repository
+
+Built data products (`cidex_*.csv`, `cidex_*.parquet`) are **not committed here**. They
+regenerate from the raw EPA files in about a minute, and the citable copy lives on Zenodo,
+which is what a DOI is for. Committing them would add ~25 MB to git history on every
+annual rebuild. `data/processed/stats.json` *is* committed, because every number in every
+document is read from it.
+
 ## Rebuilding
 
 ```bash

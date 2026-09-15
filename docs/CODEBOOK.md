@@ -2,7 +2,7 @@
 
 > **DRAFT — NOT VERIFIED.** This package has not passed its verification gate. No number in it has been checked against the primary source by the author. Do not cite, deposit, or redistribute.
 
-Version 1.0 · built 2026-09-14
+Version 1.0 · built 2026-09-15
 
 CIDEX is distributed as four tables. The unit of analysis for emissions is
 **(model year, engine family, pollutant, test type)**. Family-level attributes and
