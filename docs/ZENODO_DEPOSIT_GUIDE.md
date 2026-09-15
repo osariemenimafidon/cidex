@@ -1,18 +1,57 @@
 # Depositing CIDEX on Zenodo
 
-**Do not start this until `docs/VERIFICATION_CHECKLIST.md` is signed.** A DOI is permanent.
+**Do not start until `docs/VERIFICATION_CHECKLIST.md` is signed.** A DOI is permanent.
 
-Zenodo is unreachable from the build environment (organisation egress policy), so this
-step is manual. It is a web form and takes about ten minutes. Every field you need is
-filled in below — this should be copy-paste, not decisions.
+There are two routes. **Route A is better** and is the one this repository is set up for.
 
-## Step 0 — practise on the sandbox first
+---
 
-Do the whole thing once at **https://sandbox.zenodo.org** before touching the real site.
-Sandbox DOIs are fake and the instance is wiped periodically, which is exactly what you
-want for a rehearsal. The form is identical.
+## Route A — GitHub release, Zenodo deposits automatically
 
-## Step 1 — build the release archive
+Zenodo's GitHub integration performs the deposit on Zenodo's servers. Nothing has to reach
+Zenodo from your machine, and every future version is one release away. `.zenodo.json` in
+the repository root supplies the metadata, so the record is not assembled from GitHub's
+repository description.
+
+### A1. Link Zenodo to GitHub, once
+
+1. Go to <https://zenodo.org/account/settings/github/>
+2. Sign in with your ORCID if prompted, and authorise GitHub access
+3. Find **osariemenimafidon/cidex** in the repository list and switch it **On**
+
+If the repository does not appear, use **Sync now** — Zenodo caches the list.
+
+### A2. Publish a release on GitHub
+
+1. Go to <https://github.com/osariemenimafidon/cidex/releases/new>
+2. Click **Choose a tag**, type `v1.0.0`, choose **Create new tag on publish**
+3. Release title: `CIDEX v1.0.0`
+4. Description: a sentence or two. The archive's own README carries the detail.
+5. Click **Publish release**
+
+Zenodo receives the webhook, fetches the source archive, reads `.zenodo.json`, and mints
+the DOI. It usually appears within a few minutes at
+<https://zenodo.org/account/settings/github/>.
+
+### A3. What you get
+
+Two DOIs. A **concept DOI** that always resolves to the newest version — cite this one in
+a CV — and a **version DOI** fixed to v1.0.0, which is what a paper citing these exact
+numbers should reference.
+
+### A4. Annual versioning
+
+The CV commitment is annual maintenance. Under Route A that is: re-run the pipeline
+against the refreshed EPA files, re-verify, tag `v1.1.0`, publish the release. Zenodo
+mints a new version DOI under the same concept DOI automatically.
+
+---
+
+## Route B — manual web upload
+
+Use this only if Route A fails. It deposits the built archive rather than the source tree.
+
+### B1. Build the release archive
 
 ```bash
 cd ~/Documents/cidex
@@ -23,11 +62,11 @@ This writes `release/cidex-v1.0.0.zip` containing the data, code, documentation 
 provenance log — but **not** the raw EPA files, which are redistributable but large and
 better cited than copied.
 
-## Step 2 — new upload
+### B2. New upload
 
 **https://zenodo.org/uploads/new** — drag in `release/cidex-v1.0.0.zip`.
 
-## Step 3 — metadata
+### B3. Metadata
 
 | Field | Value |
 |---|---|
@@ -57,12 +96,12 @@ better cited than copied.
 | is supplement to | the CIDEX GitHub repository URL |
 | is derived from | https://www.epa.gov/compliance-and-fuel-economy-data/annual-certification-data-vehicles-engines-and-equipment |
 
-## Step 4 — publish
+### B4. Publish
 
 Zenodo warns that publishing is irreversible. It is. Check the creator spelling and the
 ORCID one more time, then publish.
 
-## Step 5 — record it, the same day
+### B5. Record it, the same day
 
 1. Copy the DOI into `CITATION.cff` (`doi:` field) and the README badge.
 2. Add a row to `~/Documents/facet/docs/EVIDENCE_LOG.csv` with the date, DOI, URL and a
@@ -74,7 +113,7 @@ ORCID one more time, then publish.
 
 A publication that is not logged the day it happens is the one that goes missing later.
 
-## On annual maintenance
+## After either route — record it
 
 The CV line commits to annual versioning. Zenodo handles this properly: use **New
 version** on the existing record rather than a fresh upload, and the DOI you mint stays
