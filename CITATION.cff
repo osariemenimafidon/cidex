@@ -15,7 +15,7 @@ abstract: >-
   Agency certification data for heavy-duty highway and nonroad compression-ignition
   engines. Reconciles two EPA source workbooks whose internal structures differ - one
   long on pollutant, one wide - into a single schema covering 8,627
-  engine families and 97,008 emission records across
+  engine families and 94,869 emission records across
   108 manufacturers, model years 2011
   to 2027. Includes a resolved carryover lineage linking
   2,541 distinct nonroad certification families across

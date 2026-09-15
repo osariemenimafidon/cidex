@@ -131,7 +131,20 @@ def main():
     checks["units_never_null"] = bool(em.units.notna().all())
     checks["no_mixed_units_within_panel"] = bool(
         em.groupby("panel").units.nunique().le(2).all())
-    checks["highway_units_correct"] = bool(
+    # The highway source file states NO units anywhere - the column headers are
+    # bare ("TR Cert Result", "Transient Standard"). g/bhp-hr was originally an
+    # assertion. It is now a test: US heavy-duty highway standards have known
+    # values in g/bhp-hr, and they are an order of magnitude away from the same
+    # standards expressed in g/kW-hr, so the modal standard per pollutant decides it.
+    KNOWN_G_BHP_HR = {"NOx": 0.20, "PM": 0.01, "NMHC": 0.14, "CO": 15.5}
+    hw_std = em[(em.panel == "highway") & em.standard.notna()]
+    modal = {p: float(g.standard.mode().iloc[0])
+             for p, g in hw_std.groupby("pollutant") if p in KNOWN_G_BHP_HR and len(g)}
+    S["highway_modal_standards"] = modal
+    S["highway_known_standards_g_bhp_hr"] = KNOWN_G_BHP_HR
+    checks["highway_units_evidenced_by_standards"] = all(
+        abs(modal.get(p, float("nan")) - v) < 1e-9 for p, v in KNOWN_G_BHP_HR.items())
+    checks["highway_units_labelled"] = bool(
         set(em.loc[em.panel == "highway", "units"].unique()) == {"g/bhp-hr"})
     checks["nonroad_units_correct"] = bool(
         set(em.loc[em.panel == "nonroad", "units"].unique()) <= {"g/kW-hr", "pct opacity"})

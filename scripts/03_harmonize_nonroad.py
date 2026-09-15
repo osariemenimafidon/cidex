@@ -142,6 +142,10 @@ def main():
         pol = NONROAD_POLLUTANT_MAP.get(sub) or SMOKE_SUBS.get(sub)
         block = pd.DataFrame({
             "panel": "nonroad",
+            # Source row identity. 1,487 families occupy more than one source row
+            # (different engine codes, up to 34 rows for one family), so a family
+            # name alone does not identify a measurement's origin.
+            "src_row": df.index,
             "model_year": df[0],
             "engine_family": df[1],
             "engine_code": df[40] if 40 in df.columns else pd.NA,
@@ -160,12 +164,25 @@ def main():
     report["long_empty_dropped"] = before - len(em)
 
     # FEL is a limit, not a measured result: move it to its own column.
-    fel = em[em["test_type"] == "fel"][
-        ["model_year", "engine_family", "pollutant", "cert_result"]
-    ].rename(columns={"cert_result": "fel"})
+    #
+    # Merge on the SOURCE ROW, not on (model_year, engine_family, pollutant). An
+    # earlier version keyed on the family and silently multiplied rows: 1,487
+    # families occupy more than one source row (up to 34), so the family key
+    # produced several FEL entries per key and the merge fanned every measurement
+    # row out to match. That added 2,139 phantom rows - real values, duplicated,
+    # which is worse than missing ones because nothing looks wrong downstream.
+    fel = em[em["src_row"].notna()]
+    fel = fel[fel["test_type"] == "fel"][["src_row", "pollutant", "cert_result"]]
+    fel = fel.rename(columns={"cert_result": "fel"})
     em = em[em["test_type"] != "fel"].copy()
-    em = em.merge(fel, on=["model_year", "engine_family", "pollutant"], how="left")
-    report["fel_values"] = len(fel)
+    before_merge = len(em)
+    em = em.merge(fel, on=["src_row", "pollutant"], how="left")
+    if len(em) != before_merge:
+        raise SystemExit(f"FEL merge changed the row count: {before_merge} -> "
+                         f"{len(em)}. The merge key is not unique per measurement row.")
+    report["fel_values"] = int(len(fel))
+    report["fel_merge_row_count_stable"] = True
+    em = em.drop(columns=["src_row"])
 
     # Standards come from the family-level compliance standard string, which is
     # not pollutant-specific. Left null rather than guessed. [VERIFY]

@@ -17,6 +17,7 @@
   "long_rows_before": 224708,
   "long_empty_dropped": 141657,
   "fel_values": 1606,
+  "fel_merge_row_count_stable": true,
   "family_rows": 7925,
-  "emission_rows": 83584
+  "emission_rows": 81445
 }

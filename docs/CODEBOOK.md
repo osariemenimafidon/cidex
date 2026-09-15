@@ -51,9 +51,9 @@ reconstructed.
 | `NH3` | 3 |
 | `NMHC` | 14,219 |
 | `NMHCE` | 13 |
-| `NMHC_NOx` | 7,067 |
-| `NOx` | 14,519 |
-| `PM` | 15,693 |
+| `NMHC_NOx` | 6,712 |
+| `NOx` | 14,238 |
+| `PM` | 14,190 |
 | `smoke_accel` | 1,853 |
 | `smoke_lug` | 1,763 |
 | `smoke_peak` | 1,785 |
@@ -110,7 +110,7 @@ reconstructed.
 
 ### `cidex_emissions.csv`
 
-97,008 rows.
+94,869 rows.
 
 | Column | Type | Description |
 |---|---|---|

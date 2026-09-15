@@ -173,7 +173,7 @@
     }
   },
   "coverage_threshold": 0.5,
-  "build_date": "2026-09-14",
+  "build_date": "2026-09-15",
   "panels": [
     "highway",
     "nonroad"
@@ -182,9 +182,9 @@
   "families_highway": 702,
   "families_nonroad": 7925,
   "configs_total": 9794,
-  "emission_rows_total": 97008,
+  "emission_rows_total": 94869,
   "emission_rows_highway": 13424,
-  "emission_rows_nonroad": 83584,
+  "emission_rows_nonroad": 81445,
   "model_year_min_highway": 2015,
   "model_year_max_highway": 2026,
   "model_year_min_nonroad": 2011,
@@ -220,13 +220,13 @@
     "pct opacity"
   ],
   "rows_by_panel_pollutant": {
-    "PM": 15693,
-    "NOx": 14519,
     "CO": 14238,
+    "NOx": 14238,
     "NMHC": 14219,
+    "PM": 14190,
     "CO2": 13196,
     "CH4": 7456,
-    "NMHC_NOx": 7067,
+    "NMHC_NOx": 6712,
     "N2O": 4700,
     "smoke_accel": 1853,
     "smoke_peak": 1785,
@@ -273,8 +273,20 @@
     "lineage_root": "CCPXL18.1NYS",
     "depth": 14
   },
+  "highway_modal_standards": {
+    "CO": 15.5,
+    "NMHC": 0.14,
+    "NOx": 0.2,
+    "PM": 0.01
+  },
+  "highway_known_standards_g_bhp_hr": {
+    "NOx": 0.2,
+    "PM": 0.01,
+    "NMHC": 0.14,
+    "CO": 15.5
+  },
   "negative_cert_results": 50,
-  "negative_cert_result_share_pct": 0.0515,
+  "negative_cert_result_share_pct": 0.0527,
   "negative_cert_result_families": 18,
   "negative_cert_result_panels": [
     "nonroad"
@@ -284,7 +296,8 @@
     "no_emission_row_without_family": true,
     "units_never_null": true,
     "no_mixed_units_within_panel": true,
-    "highway_units_correct": true,
+    "highway_units_evidenced_by_standards": true,
+    "highway_units_labelled": true,
     "nonroad_units_correct": true,
     "carryover_no_true_cycles": true,
     "every_negative_value_is_flagged": true,
@@ -315,11 +328,11 @@
     {
       "why": "nonroad, steady-state NOx \u2014 tests the wide-to-long unpivot",
       "panel": "nonroad",
-      "engine_family": "LCPXL08.8NZS",
+      "engine_family": "LCEXL60.0AAB",
       "model_year": 2020,
       "pollutant": "NOx",
       "test_type": "steady_state",
-      "cidex_cert_result": 3.36,
+      "cidex_cert_result": 0.48,
       "units": "g/kW-hr"
     },
     {

@@ -14,7 +14,7 @@ judgement calls are not, which is the entire point.
 
 - [ ] Ran the pipeline from a clean checkout following `README.md`
 - [ ] `data/processed/stats.json` matches the one shipped in this package
-- [ ] All 9 integrity checks report PASS
+- [ ] All 10 integrity checks report PASS
 - [ ] The SHA-256 hashes in `logs/provenance.jsonl` match the EPA files I downloaded
 
 Expected headline figures:
@@ -23,7 +23,7 @@ Expected headline figures:
 |---|---|
 | Engine families | 8,627 (702 highway, 7,925 nonroad) |
 | Configurations | 9,794 |
-| Emission records | 97,008 |
+| Emission records | 94,869 |
 | Manufacturers | 108 |
 | Distinct lineages | 2,541 |
 
@@ -71,11 +71,11 @@ up by hand in EPA's interactive certificate data tool.
 | | |
 |---|---|
 | Panel | nonroad |
-| Engine family | `LCPXL08.8NZS` |
+| Engine family | `LCEXL60.0AAB` |
 | Model year | 2020 |
 | Pollutant | NOx |
 | Test type | steady_state |
-| **CIDEX says** | **3.36 g/kW-hr** |
+| **CIDEX says** | **0.48 g/kW-hr** |
 
 - [ ] Looked this family up in EPA's interactive certificate tool
 - [ ] The value above matches, or I have recorded what it actually says: ______________

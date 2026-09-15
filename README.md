@@ -7,7 +7,7 @@
 A harmonized engine-family-level panel of US EPA certification data for heavy-duty
 highway and nonroad compression-ignition engines.
 
-8,627 engine families · 97,008 emission records ·
+8,627 engine families · 94,869 emission records ·
 108 manufacturers · MY2011–2027
 
 Imafidon, Osariemen · [ORCID 0009-0006-3069-4674](https://orcid.org/0009-0006-3069-4674) · Independent Researcher
@@ -67,7 +67,7 @@ the pipeline writes. Nothing is typed by hand, so the prose cannot drift from th
 |---|---|---|
 | `cidex_family.csv` | 8,627 | One row per (panel, model year, engine family) |
 | `cidex_config.csv` | 9,794 | Engine configurations within a family |
-| `cidex_emissions.csv` | 97,008 | One row per (family, pollutant, test type) |
+| `cidex_emissions.csv` | 94,869 | One row per (family, pollutant, test type) |
 | `cidex_carryover.csv` | 7,925 | Resolved nonroad certification lineage |
 
 Parquet mirrors are written alongside. See [`docs/CODEBOOK.md`](docs/CODEBOOK.md) for

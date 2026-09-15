@@ -16,8 +16,8 @@ converting is deliberately left with the user.
 
 ## 2. 50 negative certification results
 
-50 rows (0.0515% of
-97,008), across 18 engine families,
+50 rows (0.0527% of
+94,869), across 18 engine families,
 all in the nonroad panel, carry a negative
 `cert_result`. An emission rate cannot be physically negative.
 
@@ -99,7 +99,8 @@ evidence that the values match EPA — that is what the verification gate is for
 - PASS — `no_emission_row_without_family`
 - PASS — `units_never_null`
 - PASS — `no_mixed_units_within_panel`
-- PASS — `highway_units_correct`
+- PASS — `highway_units_evidenced_by_standards`
+- PASS — `highway_units_labelled`
 - PASS — `nonroad_units_correct`
 - PASS — `carryover_no_true_cycles`
 - PASS — `every_negative_value_is_flagged`
