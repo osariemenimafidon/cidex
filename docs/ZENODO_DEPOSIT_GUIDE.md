@@ -47,9 +47,40 @@ mints a new version DOI under the same concept DOI automatically.
 
 ---
 
-## Route B — manual web upload
+## Route B — run the deposit script from your own Terminal
 
-Use this only if Route A fails. It deposits the built archive rather than the source tree.
+`scripts/13_zenodo_deposit.py` does the whole deposit through Zenodo's API. It cannot be
+run from an agent session — that environment's egress proxy refuses `CONNECT zenodo.org:443`
+with 403 before any TLS handshake, so no token is ever transmitted — but your own shell has
+no such restriction.
+
+```bash
+cd ~/Documents/cidex
+pip install requests
+
+# rehearse on the sandbox first
+export ZENODO_SANDBOX_TOKEN=...
+python3 scripts/13_zenodo_deposit.py --sandbox
+
+# then the real deposit
+export ZENODO_TOKEN=...
+python3 scripts/13_zenodo_deposit.py
+```
+
+Tokens are created at `<instance>/account/settings/applications/tokens/new/` with scopes
+**deposit:write** and **deposit:actions**. They stay in your shell; nothing sends them
+anywhere but Zenodo.
+
+The script refuses to run if `.gate-signed` is absent, uploads the archive, applies the
+metadata from `.zenodo.json`, and then **stops with a draft**. Publishing is irreversible,
+so it is a separate deliberate act: review the draft in the browser, then either press
+Publish there or re-run with `--publish`.
+
+---
+
+## Route C — manual web upload
+
+Use this only if A and B both fail. It deposits the built archive rather than the source tree.
 
 ### B1. Build the release archive
 
