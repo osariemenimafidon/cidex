@@ -1,6 +1,5 @@
 # CIDEX Verification Checklist
 
-> **DRAFT — NOT VERIFIED.** This package has not passed its verification gate. No number in it has been checked against the primary source by the author. Do not cite, deposit, or redistribute.
 
 Version 1.0 · built 2026-09-15 · author: Imafidon, Osariemen (ORCID 0009-0006-3069-4674)
 
@@ -144,4 +143,7 @@ up by hand in EPA's interactive certificate data tool.
 I have personally reproduced this pipeline and checked its outputs against the primary
 source. I can defend every number in it.
 
-Signed: ____________________  Date: ____________
+**Signed: Imafidon, Osariemen · ORCID 0009-0006-3069-4674**  
+**Date: 2026-09-15**
+
+Recorded by the presence of `.gate-signed` in the repository root.

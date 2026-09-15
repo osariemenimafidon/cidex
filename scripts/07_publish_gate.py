@@ -92,9 +92,17 @@ def main():
         return 1
     print("GATE PASS (mechanical) — no draft stamps, placeholders, or credentials in any")
     print("document intended for publication.\n")
-    print("This is the MECHANICAL half only. The gate is NOT cleared until the author has")
-    print("reproduced the pipeline, completed the five spot-checks against EPA, and signed")
-    print("docs/VERIFICATION_CHECKLIST.md.")
+    if os.path.exists(".gate-signed"):
+        print("HUMAN HALF: SIGNED. .gate-signed is present — the author has attested to")
+        print("reproducing the pipeline, completing the spot-checks against the primary")
+        print("source, and ruling on the flagged judgement calls.\n")
+        print("Delete .gate-signed and rebuild to return every document and figure to DRAFT.")
+        print("\nGATE CLEARED.")
+    else:
+        print("HUMAN HALF: NOT SIGNED. The mechanical checks pass, but .gate-signed is")
+        print("absent. The gate is not cleared until the author has reproduced the")
+        print("pipeline, completed the spot-checks, and signed")
+        print("docs/VERIFICATION_CHECKLIST.md.")
     return 0
 
 

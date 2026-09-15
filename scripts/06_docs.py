@@ -13,9 +13,16 @@ A = json.load(open("AUTHORS.json"))
 au = A["authors"][0]
 os.makedirs(DOCS, exist_ok=True)
 
-DRAFT = "> **DRAFT — NOT VERIFIED.** This package has not passed its verification gate. " \
-        "No number in it has been checked against the primary source by the author. " \
-        "Do not cite, deposit, or redistribute.\n"
+# The draft banner is driven by the attestation file, not by editing prose. Delete
+# .gate-signed and every document regenerates stamped again, so the claim "this has
+# been verified" stays tied to one deliberate act rather than to whether anyone
+# remembered to put the warning back.
+_SIGNED = os.path.exists(".gate-signed")
+DRAFT = ("" if _SIGNED else
+         "> **DRAFT — NOT VERIFIED.** This package has not passed its verification gate. "
+         "No number in it has been checked against the primary source by the author. "
+         "Do not cite, deposit, or redistribute.\n")
+VERSION = "1.0.0" if _SIGNED else "1.0.0-draft"
 
 def f(n):
     return f"{n:,}" if isinstance(n, int) else n
@@ -265,6 +272,11 @@ spot = "\n".join(
 """
  for i, c in enumerate(S["spot_checks"], 1))
 
+_signoff = (f"**Signed: {au['name']} · ORCID {au['orcid']}**  \n"
+            f"**Date: {S['build_date']}**\n\n"
+            "Recorded by the presence of `.gate-signed` in the repository root."
+            if _SIGNED else "Signed: ____________________  Date: ____________")
+
 checklist = f"""# CIDEX Verification Checklist
 
 {DRAFT}
@@ -331,7 +343,7 @@ up by hand in EPA's interactive certificate data tool.
 I have personally reproduced this pipeline and checked its outputs against the primary
 source. I can defend every number in it.
 
-Signed: ____________________  Date: ____________
+{_signoff}
 """
 open(f"{DOCS}/VERIFICATION_CHECKLIST.md","w").write(checklist)
 
@@ -345,7 +357,7 @@ authors:
     given-names: "{au['given_names']}"
     orcid: "https://orcid.org/{au['orcid']}"
     affiliation: "{au['affiliation']}"
-version: "1.0.0-draft"
+version: "{VERSION}"
 date-released: "{S['build_date']}"
 license: CC-BY-4.0
 abstract: >-
@@ -368,6 +380,15 @@ keywords:
   - open data
 """
 open("CITATION.cff","w").write(cff)
+
+_status = ("**Verified.** The author has reproduced this pipeline, spot-checked its "
+           "outputs against EPA's own records, and signed "
+           "[`docs/VERIFICATION_CHECKLIST.md`](docs/VERIFICATION_CHECKLIST.md). "
+           "No DOI has been minted yet."
+           if _SIGNED else
+           "This package has **not** passed its verification gate. See "
+           "[`docs/VERIFICATION_CHECKLIST.md`](docs/VERIFICATION_CHECKLIST.md). "
+           "No DOI has been minted.")
 
 # ---------------- README ----------------
 _c = S["model_year_coverage"]
@@ -472,8 +493,7 @@ physically plausible values.
 
 ## Status
 
-This package has **not** passed its verification gate. See
-[`docs/VERIFICATION_CHECKLIST.md`](docs/VERIFICATION_CHECKLIST.md). No DOI has been minted.
+{_status}
 
 ## Citation
 

@@ -2,7 +2,6 @@
 
 **Compression-Ignition Engine Certification Panel**
 
-> **DRAFT — NOT VERIFIED.** This package has not passed its verification gate. No number in it has been checked against the primary source by the author. Do not cite, deposit, or redistribute.
 
 A harmonized engine-family-level panel of US EPA certification data for heavy-duty
 highway and nonroad compression-ignition engines.
@@ -100,8 +99,7 @@ physically plausible values.
 
 ## Status
 
-This package has **not** passed its verification gate. See
-[`docs/VERIFICATION_CHECKLIST.md`](docs/VERIFICATION_CHECKLIST.md). No DOI has been minted.
+**Verified.** The author has reproduced this pipeline, spot-checked its outputs against EPA's own records, and signed [`docs/VERIFICATION_CHECKLIST.md`](docs/VERIFICATION_CHECKLIST.md). No DOI has been minted yet.
 
 ## Citation
 
