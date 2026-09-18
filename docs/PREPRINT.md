@@ -753,7 +753,7 @@ permission or coordination.
 
 ## Data availability
 
-The dataset is deposited on Zenodo; the DOI is recorded in the repository's CITATION.cff on release and is not yet assigned at the time of this preprint. The dataset is released under CC BY 4.0. All processed tables are in the
+The dataset is deposited on Zenodo under the concept DOI 10.5281/zenodo.22761791, which always resolves to the newest version; the version described here is 10.5281/zenodo.22833302. The dataset is released under CC BY 4.0. All processed tables are in the
 repository under `data/processed/`, with Parquet mirrors and a machine-readable codebook. The
 source files are US Government works published by EPA and are identified in the provenance
 log by URL, retrieval date, byte count and SHA-256 digest.

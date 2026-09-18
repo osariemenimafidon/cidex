@@ -1,0 +1,7 @@
+# Zenodo and engrXiv identifiers for CIDEX.
+# concept = always resolves to the newest version; cite this for the work.
+concept: 10.5281/zenodo.22761791
+version_latest: 10.5281/zenodo.22833302
+version_first: 10.5281/zenodo.22761792
+# The data paper is posted separately as an open-access preprint.
+preprint: 10.31224/8233

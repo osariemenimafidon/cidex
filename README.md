@@ -106,11 +106,17 @@ physically plausible values.
 
 ## Status
 
-**Verified.** The author has reproduced this pipeline, spot-checked its outputs against EPA's own records, and signed [`docs/VERIFICATION_CHECKLIST.md`](docs/VERIFICATION_CHECKLIST.md). No DOI has been minted yet.
+**Verified.** The author has reproduced this pipeline, spot-checked its outputs against EPA's own records, and signed [`docs/VERIFICATION_CHECKLIST.md`](docs/VERIFICATION_CHECKLIST.md). Deposited on Zenodo under concept DOI [10.5281/zenodo.22761791](https://doi.org/10.5281/zenodo.22761791), which always resolves to the newest version. The accompanying data paper is posted as an open-access preprint at [10.31224/8233](https://doi.org/10.31224/8233).
 
 ## Citation
 
-See [`CITATION.cff`](CITATION.cff).
+Cite the dataset by its **concept DOI**, which always resolves to the newest version:
+
+> Imafidon, O. (2026). *CIDEX: Compression-ignition engine certification panel* (Version 1.0.1) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.22761791
+
+This version is `10.5281/zenodo.22833302`. The accompanying data paper is posted as an open-access preprint at https://doi.org/10.31224/8233, and is the right citation if you are citing the method rather than the data.
+
+See [`CITATION.cff`](CITATION.cff) for the machine-readable form.
 
 ## Licence
 

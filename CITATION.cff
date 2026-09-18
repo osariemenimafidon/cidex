@@ -7,9 +7,20 @@ authors:
     given-names: "Osariemen"
     orcid: "https://orcid.org/0009-0006-3069-4674"
     affiliation: "Independent Researcher"
-version: "1.0.0"
+version: "1.0.1"
 date-released: "2026-09-15"
 license: CC-BY-4.0
+doi: "10.5281/zenodo.22761791"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22761791"
+    description: "Concept DOI; always resolves to the newest version."
+  - type: doi
+    value: "10.5281/zenodo.22833302"
+    description: "This version."
+  - type: doi
+    value: "10.31224/8233"
+    description: "The accompanying data paper, posted as an open-access preprint."
 abstract: >-
   A harmonized engine-family-level panel of United States Environmental Protection
   Agency certification data for heavy-duty highway and nonroad compression-ignition

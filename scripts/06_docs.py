@@ -22,7 +22,20 @@ DRAFT = ("" if _SIGNED else
          "> **DRAFT — NOT VERIFIED.** This package has not passed its verification gate. "
          "No number in it has been checked against the primary source by the author. "
          "Do not cite, deposit, or redistribute.\n")
-VERSION = "1.0.0" if _SIGNED else "1.0.0-draft"
+VERSION = "1.0.1" if _SIGNED else "1.0.1-draft"
+
+# Identifiers are read from docs/DOI.txt rather than typed into prose, so minting a
+# new DOI is one edit to a data file and every document follows. An absent file means
+# no DOI exists, and the documents say so rather than leaving a placeholder.
+DOI = {}
+if os.path.exists("docs/DOI.txt"):
+    for _l in open("docs/DOI.txt"):
+        _l = _l.strip()
+        if _l and not _l.startswith("#") and ":" in _l:
+            _k, _v = _l.split(":", 1)
+            DOI[_k.strip()] = _v.strip()
+CONCEPT_DOI = DOI.get("concept")
+PREPRINT_DOI = DOI.get("preprint")
 
 def f(n):
     return f"{n:,}" if isinstance(n, int) else n
@@ -360,6 +373,17 @@ authors:
 version: "{VERSION}"
 date-released: "{S['build_date']}"
 license: CC-BY-4.0
+doi: "{CONCEPT_DOI or ''}"
+identifiers:
+  - type: doi
+    value: "{CONCEPT_DOI or ''}"
+    description: "Concept DOI; always resolves to the newest version."
+  - type: doi
+    value: "{DOI.get('version_latest', '')}"
+    description: "This version."
+  - type: doi
+    value: "{PREPRINT_DOI or ''}"
+    description: "The accompanying data paper, posted as an open-access preprint."
 abstract: >-
   A harmonized engine-family-level panel of United States Environmental Protection
   Agency certification data for heavy-duty highway and nonroad compression-ignition
@@ -384,11 +408,29 @@ open("CITATION.cff","w").write(cff)
 _status = ("**Verified.** The author has reproduced this pipeline, spot-checked its "
            "outputs against EPA's own records, and signed "
            "[`docs/VERIFICATION_CHECKLIST.md`](docs/VERIFICATION_CHECKLIST.md). "
-           "No DOI has been minted yet."
+           + (f"Deposited on Zenodo under concept DOI [{CONCEPT_DOI}]"
+              f"(https://doi.org/{CONCEPT_DOI}), which always resolves to the newest "
+              f"version. "
+              + (f"The accompanying data paper is posted as an open-access preprint at "
+                 f"[{PREPRINT_DOI}](https://doi.org/{PREPRINT_DOI})."
+                 if PREPRINT_DOI else "")
+              if CONCEPT_DOI else "No DOI has been minted yet.")
            if _SIGNED else
            "This package has **not** passed its verification gate. See "
            "[`docs/VERIFICATION_CHECKLIST.md`](docs/VERIFICATION_CHECKLIST.md). "
            "No DOI has been minted.")
+
+_cite_block = (
+    f"Cite the dataset by its **concept DOI**, which always resolves to the newest "
+    f"version:\n\n"
+    f"> Imafidon, O. ({S['build_date'][:4]}). *CIDEX: Compression-ignition engine "
+    f"certification panel* (Version {VERSION}) [Data set]. Zenodo. "
+    f"https://doi.org/{CONCEPT_DOI}\n\n"
+    f"This version is `{DOI.get('version_latest', '')}`. The accompanying data paper is "
+    f"posted as an open-access preprint at https://doi.org/{PREPRINT_DOI}, and is the "
+    f"right citation if you are citing the method rather than the data."
+    if CONCEPT_DOI else
+    "No DOI has been minted yet. See [`CITATION.cff`](CITATION.cff).")
 
 # ---------------- README ----------------
 _c = S["model_year_coverage"]
@@ -504,7 +546,9 @@ physically plausible values.
 
 ## Citation
 
-See [`CITATION.cff`](CITATION.cff).
+{_cite_block}
+
+See [`CITATION.cff`](CITATION.cff) for the machine-readable form.
 
 ## Licence
 

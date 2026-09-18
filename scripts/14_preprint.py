@@ -45,12 +45,25 @@ FILES = ["cidex_family.csv", "cidex_config.csv", "cidex_emissions.csv",
          "cidex_carryover.csv"]
 SCHEMA = {n: headers(n) for n in FILES}
 
+# Identifiers are read from docs/DOI.txt rather than typed, so the manuscript cannot
+# assert a DOI state that the deposit record contradicts.
+DOI = {}
 doi_file = f"{DOCS}/DOI.txt"
-DOI = open(doi_file).read().strip() if os.path.exists(doi_file) else None
-data_avail = (f"The dataset is deposited on Zenodo under DOI {DOI}." if DOI else
-              "The dataset is deposited on Zenodo; the DOI is recorded in the "
-              "repository's CITATION.cff on release and is not yet assigned at the time "
-              "of this preprint.")
+if os.path.exists(doi_file):
+    for _l in open(doi_file):
+        _l = _l.strip()
+        if _l and not _l.startswith("#") and ":" in _l:
+            _k, _v = _l.split(":", 1)
+            DOI[_k.strip()] = _v.strip()
+CONCEPT_DOI = DOI.get("concept")
+data_avail = (
+    f"The dataset is deposited on Zenodo under the concept DOI {CONCEPT_DOI}, which "
+    f"always resolves to the newest version; the version described here is "
+    f"{DOI.get('version_latest', CONCEPT_DOI)}."
+    if CONCEPT_DOI else
+    "The dataset is deposited on Zenodo; the DOI is recorded in the "
+    "repository's CITATION.cff on release and is not yet assigned at the time "
+    "of this preprint.")
 
 TEX = r"""
 \usepackage{booktabs}\usepackage{longtable}\usepackage{array}\usepackage{etoolbox}
