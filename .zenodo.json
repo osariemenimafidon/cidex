@@ -11,7 +11,7 @@
   ],
   "license": "cc-by-4.0",
   "access_right": "open",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "language": "eng",
   "keywords": [
     "diesel engines",
@@ -40,6 +40,16 @@
       "identifier": "https://osariemenimafidon.github.io/facet/",
       "relation": "isPartOf",
       "scheme": "url"
+    },
+    {
+      "identifier": "10.31224/8233",
+      "relation": "isDocumentedBy",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.22823180",
+      "relation": "isPartOf",
+      "scheme": "doi"
     }
   ],
   "notes": "Part of the FACET research program (Fuel-Adaptive Control Evidence & Transferability). Built entirely from openly available federal data, self-funded, and published openly."
